@@ -1,5 +1,0 @@
-id,IJPM2AAHJR4YXN
-type,Maven
-connection,X0N56NVOD2HQ0S
-connection,IAA2D1D92UR3TB
-connection,BS9KOPT5E4SF87
