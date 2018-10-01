@@ -9,7 +9,12 @@ mavenOS is the operating system for a bot in the network called Maven.
 import csv 
 import random 
 import datetime
+import itertools
+import operator
+import random
+
 import admin
+import analyst
 
 ID = 'IJPM2AAHJR4YXN' # maven's ID number
 root = 'C:/Users/holtb/Desktop/mavenOS/' # location of the mavenOS root file
@@ -58,33 +63,13 @@ def sourceNodes(id, qualifier):
 	return content
 
 displayProfile(ID)
+importCall = '4LR6GIVSELPOGH' # input('Import new data? (Enter nodeID or "n"): ')
+if importCall != 'n':
+	data = admin.importCreate(importCall)
+	nodeUpdate = analyst.locationsBasic(data)
+	for i in nodeUpdate:
+		admin.nodeUpdate(importCall, i)
 admin.exportCreate(str(datetime.date.today()) + '_' + ID + '_sourceNetwork', sourceNetwork(ID))
 admin.exportCreate(str(datetime.date.today()) + '_' + ID + '_sourceAttributesLibrary', sourceAttributesLibrary(ID))
 admin.exportCreate(str(datetime.date.today()) + '_' + ID + '_sourceJobs', sourceNodes(ID, 'job'))
 input()
-
-'''
--—
-0.6 features
-An admin user can create nodes for candidates
-AAUC see a list of candidates by job posting
-AAUC see a list of all active candidates
-
-——
--—
-A user can search a Mark and Maven job board
-
-——
--—
-A user can create a dossier
-A user’s dossier is very badass in comparison to  resume
-A user can see how their dossier stacks up against other dossiers
-A user can see how qualified they’d be for the jobs they want to poly for using their dossier
-A user can customize their dossier to each role they want to apply for
-
-——
--—
-A user can apply to jobs with their dossier
-
-——
-'''
