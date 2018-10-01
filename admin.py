@@ -3,6 +3,7 @@
 import random
 import csv
 import string
+import json
 
 root = 'C:/Users/holtb/Desktop/mavenOS/' # location of the mavenOS root file
 
@@ -30,7 +31,7 @@ def idList():
 
 def upload(ID):
 	content = []
-	address = root + ID + '.txt'
+	address = root + 'nodes/' + ID + '.txt'
 	with open(address, 'r', newline='') as readfile:
 		uploadReader = csv.reader(readfile)
 		for i in uploadReader:
@@ -38,7 +39,7 @@ def upload(ID):
 	return content
 
 def nodeCreate(profile):
-	address = root + profile[0][1] + '.txt'	
+	address = root + 'nodes/' + profile[0][1] + '.txt'	
 	with open(address, 'w', newline='') as writefile:
 		createWriter = csv.writer(writefile)
 		for i in profile:
@@ -46,8 +47,16 @@ def nodeCreate(profile):
 	return
 
 def nodeUpdate(ID, update): # (str, dict)
-	address = root + ID + '.txt'	
+	address = root + 'nodes/' + ID + '.txt'	
 	with open(address, 'a', newline='') as writefile:
 		updateWriter = csv.writer(writefile)
 		updateWriter.writerow(update)
 	return
+
+def importCreate(filename):
+	content = []
+	address = root + 'imports/' + filename + '.net'	
+	with open(address) as readfile:
+		for i in readfile:
+			content.append(json.loads(i))
+	return content
