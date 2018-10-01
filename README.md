@@ -1,38 +1,35 @@
 # mavenOS
 Operating system for Maven
 
-26 September 2018
+1 October 2018
 
-Mark and Maven is a hiring platform that improves on the resume with a dynamic, contextual, verifiable profile called a Dossier. Dossiers' ambition is to more accurately price human talent in the talent market, solving pervasive issues in diversity, gender imbalance, and talent underavailability. 
+Mark and Maven is a hiring platform that uses a dynamic, contextual, verifiable profile data resource called a Dossier instead of a Resume. Dossiers' can more accurately price human talent, helping with issues of diversity, gender imbalance, and talent underavailability. The platform operates as a graph, including bots, jobs, companies, and humans as nodes. Each node has an operating system and a profiles. Profiles are made up of attributes. Attributes are characteristics/traits (as-yet undefined), experiences (as-yet undefined), and relationships to other nodes (as-yet undefined). 
 
-As a product, Mark and Maven manifest as a network of bots, jobs, companies, and people (each of them “nodes”). Nodes have operating systems and "profiles." Profiles are sets of "attributes." Attributes are characteristics/traits (as-yet undefined), experiences (as-yet undefined), and relationships (as-yet undefined) to other nodes. 
+This programme, mavenOS, is the operating system for a bot in the network called Maven.
 
-mavenOS is the operating system for a bot in the network called Maven.
+0.6 Release Notes
+mavenOS v0.6 has a new module, 'analyst', and a new feature. Maven can now read a Hub of All Things GPS locations data file and use it to return three new characteristics to a node: the most common GPS coordinates in that file, and the most common GPS coordinates in that file filtered for only workday timestamps, and only nighttime timestamps. 
 
-GetaDossier = https://github.com/MarkandMaven/mavenOS/blob/master/GetaDossier.txt
-mavenMilestones = https://github.com/MarkandMaven/mavenOS/wiki
-mavenHistory = https://github.com/MarkandMaven/mavenOS/commits/master/README.md
-
-0.5 Release Notes
-mavenOS v0.5 was uploaded into the repository for the first time, with a number of new functions: sourceNetwork, sourceAttributesLibrary, nodeCreate, etc. Running mavenOS will cause the program to export a documentation of all of the network nodes, jobs, and allowable attributes of that Maven's network. 
-
-0.5 Features list
-- A programme called Maven can maintain a "local network of nodes" for the purposes of managing a hiring process
-- An admin can create new network nodes for maven
-- Maven can export a list of the nodes in its network
-- Maven can export a list of the attributes allowed in its nodes
-- Maven can export a list of the jobs in its network
+0.6 Features list
+- Add a new module "analyst" for processing raw data and turning it into characteristics
+- Maven can import raw data for adding to nodes as characteristics, from the folder "Imports"
+- Maven can add the following characteristics to a node (given GPS intake data from Hub of All Things DataBuyer in the imports folder): locationBigly (most common location in record), locationBigNight (same, overnight timestamps only), and locationBigWork (same, 9-5 only)
 
 ROADMAP 
 
-0.6 Planned Features
-- A candidate can create a dossier from a (Databuyer-hosted) URL (ie "click here and follow the instructions"
-- mavenOS can automagically determine (verifiably) which countries a candidate has been to and add it to their Dossier
+0.7 Planned Features
+- mavenOS can determine from a raw data file which countries a candidate has been to and add as such to their Dossier
 
 Icebox:
+- A candidate can create a dossier from a (Databuyer-hosted) URL (ie "click here and follow the instructions"
 - mavenOS has defined the Characteristics/Traits of a node
 - mavenOS has defined the Experiences of a node
 - mavenOS has defined the Relationships of a node
 - An admin can create (make), destroy (kill), amend (fix), and append (update) a node
 - Candidates are stored in a cloud-based systems with backup and automated comms? Like Mailchimp? Maybe?
 - mavenOS can communicate with email addresses in the outside world
+
+Resources / links:
+GetaDossier = https://github.com/MarkandMaven/mavenOS/blob/master/GetaDossier.txt
+mavenMilestones = https://github.com/MarkandMaven/mavenOS/wiki
+mavenHistory = https://github.com/MarkandMaven/mavenOS/commits/master/README.md
