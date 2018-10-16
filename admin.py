@@ -5,7 +5,7 @@ import csv
 import string
 import json
 
-root = 'C:/Users/holtb/Desktop/Maven Harerra/mavenOS/'
+root = 'C:/Users/holtb/Desktop/Mark and Maven/' # location of the mavenOS root file
 
 def idCreate():
 	idTaken = idList()
