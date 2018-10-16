@@ -1,25 +1,29 @@
-8 October 2018
+16 October 2018
 
-Mark and Maven is a hiring platform that uses a dynamic, contextual, verifiable profile data resource called a Dossier instead of a Resume. Dossiers' can more accurately price human talent, helping with issues of diversity, gender imbalance, and talent underavailability. The platform operates as a graph, including bots, jobs, companies, and humans as nodes. Each node has an operating system and a profiles. Profiles are made up of attributes. Attributes are characteristics/traits (as-yet undefined), experiences (as-yet undefined), and relationships to other nodes (as-yet undefined). 
+Mark and Maven is a hiring platform that uses Dossier instead of Resumes. Dossiers' are made of dynamic, contextual, verifiable personal data instead of user-inputted text, and can help to more accurately price human talent, helping with issues of diversity, gender imbalance, and talent underavailability. The platform consists of a graph of nodes, and each node is categorised as a bot, job, company, or humans. Nodes have an operating system and a profile. Their Operating Systems' purpose is to build up the nodes' profile, and profiles are made up of attribute key:value pairs. The types of attributes that a node can have include their characteristics/traits (as-yet undefined), experiences (as-yet undefined), and relationships to other nodes (as-yet undefined). 
 
 This programme, mavenOS, is the operating system for a bot in the network called Maven.
 
-0.7 Release Notes
-I tried to update and organise the codebase around the discovery of the geopy codebase - very useful geolocator library for python. I haven't cracked it yet, so the analyst programme is dead and doesn't function, but I'll get through it shortly. 
+0.8 Release Notes
+We moved the structure of the network around a bit (easy when you don't have any nodes...) and now every node's OS lives in a single root folder. There are also two support modules "analyst" and "admin" and each Maven-classified node has a second programme for creating nodes in their network that come pre-connected. Some debugging was performed, but OSv08 still can't run the analyst module successfully.
 
-0.7 Features list
-- Tried to add country identification into the analyst module, found some source code to help, analyst.py is a work in progress however
-- Mavens can now be separated out by name; this iteration is being used by Maven Harerra
+0.8 Features list
+- DONE Create Mark and Maven Source Folder, put all Mavens inside
+- DONE Create Maven Prime (standard mavenOS)
+- DONE debug mavenOS_v08
+- DONE mavenOS_v08 no longer misses attribute exports from the anchorRoot node
+- DONE Maven Mim, Shelley, Harrera all have nodes
+- DONE Mim, Shelley, and Harerra have an OS 
+- DONE Mim, Shelley, and Harerra have a CreateNode
 
 ROADMAP 
 
-0.8 Planned Features
-- A Maven Prime will keep all of the Maven's sorted and coordinated
-- Each mavenOS instance will run a new version of mavenOS
-- mavenOS will have a new programme "config" which sets up the root folder, and inaugural network node
-- mavenOS can determine from a raw data file which countries a candidate has been to and add as such to their Dossier
+0.9 Planned Features
+- mavenOS sourceNodes(ID, 'job') works for Maven Prime (do we need to be able to see all jobs in the network at once? probs. Should Prime be able to run all of its functions over its networks' networks? (currently it's just searching its network, which only has Maven Nodes))
+- debug mavenOS.analyst.locationsBasic() 
 
 Icebox:
+- "analyst" and "admin" are global modules (and thus don't need to be locally stored)
 - A candidate can create a dossier from a (Databuyer-hosted) URL (ie "click here and follow the instructions"
 - mavenOS has defined the Characteristics/Traits of a node
 - mavenOS has defined the Experiences of a node
