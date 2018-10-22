@@ -7,6 +7,7 @@ import random
 from geopy.geocoders import Nominatim
 
 def most_common(data):
+	print(data)
 	sorted_list = sorted((x, i) for i, x in enumerate(data))
 	groups = itertools.groupby(sorted_list, key=operator.itemgetter(0))
 	def _auxfun(g):
@@ -21,12 +22,10 @@ def most_common(data):
 
 def locationsBasic(data):
 	data_in_memory = []
-	count = 0
 	everywhere_tuples = []
 	nighttimes_tuples = []
 	workhour_tuples = []
 	dates_captured = []
-	countries = []
 
 	for i in data[0]["bundle"]["rumpel/locations/ios"]:
 		data_in_memory.append(i)
@@ -35,21 +34,26 @@ def locationsBasic(data):
 			nighttimes_tuples.append([i['data']['latitude'], i['data']['longitude']])
 		if int(i['data']['dateCreatedLocal'][11:13]) > 8 and int(i['data']['dateCreatedLocal'][11:13]) < 19:
 			workhour_tuples.append([i['data']['latitude'], i['data']['longitude']])
-		country = getCountry(coun.Point(i['data']['latitude'], i['data']['longitude'])).iso
-		if country not in countries:
-			countries.append(country)
 		dates_captured.append(i['data']['dateCreatedLocal'][0:10])
 		everywhere_tuples.append([i['data']['latitude'], i['data']['longitude']])
 	
+
 	geolocator = Nominatim(user_agent="Mark_and_Maven")
 	locationBigly = geolocator.reverse(str(most_common(everywhere_tuples)))
-	locationBigNight = geolocator.reverse(str(most_common(nighttimes_tuples)))
+	locationBiglyAddress = locationBigly.address
+	try: 
+		locationBigNight = geolocator.reverse(str(most_common(nighttimes_tuples)))
+		locationBigNightAddress = locationBigNight.address
+	except ValueError:
+		locationBigNightAddress = ''
+		print('locationBigNight failed, possible nighttime data not found')
 	locationBigWork = geolocator.reverse(str(most_common(workhour_tuples)))
+	locationBigWorkAddress = locationBigWork.address
 
 	locationsBasic = [
-		['locationBigly', locationBigly.address],
-		['locationBigNight', locationBigNight.address],
-		['locationBigWork', locationBigWork.address],
+		['locationBigly', locationBiglyAddress],
+		['locationBigNight', locationBigNightAddress],
+		['locationBigWork', locationBigWorkAddress],
 		]
 
 	return locationsBasic
